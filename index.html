@@ -15,6 +15,16 @@ main{padding:26px clamp(22px,4vw,62px) 54px;min-width:0}.top{display:flex;align-
 .right{display:grid;gap:17px}.mini{padding:19px;box-shadow:none}.mini-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.mini h3{margin:0;font-size:13px}.mini-head span{font:500 10px monospace;color:var(--muted)}.master{display:flex;align-items:center;gap:16px}.ring{--p:0;width:76px;height:76px;border-radius:50%;background:conic-gradient(var(--green) calc(var(--p)*1%),#e9e4da 0);display:grid;place-items:center;position:relative;flex:0 0 auto}.ring:after{content:"";position:absolute;inset:8px;background:var(--card);border-radius:50%}.ring b{z-index:1;font:700 15px monospace}.master-copy b{display:block;font-size:13px;margin-bottom:5px}.master-copy span{font-size:11px;color:var(--muted);line-height:1.55}.skills{display:grid;gap:11px}.skill{display:grid;grid-template-columns:23px 1fr auto;gap:9px;align-items:center;font-size:11px}.skill i{font-style:normal;width:22px;height:22px;background:var(--soft);color:var(--orange2);border-radius:7px;display:grid;place-items:center;font-size:9px}.skill small{color:var(--muted)}.daily{background:var(--navy);color:white;border-color:var(--navy);position:relative;overflow:hidden}.daily:after{content:"</>";position:absolute;right:-7px;bottom:-18px;font:700 50px monospace;color:rgba(255,255,255,.06)}.daily p{color:#aab9c7;font-size:11px;line-height:1.65}.daily button{border:0;background:var(--orange);color:white;padding:9px 11px;border-radius:9px;font-size:10px;font-weight:900;position:relative;z-index:1}.toast{position:fixed;right:22px;bottom:22px;background:var(--ink);color:white;border-radius:12px;padding:12px 15px;font-size:11px;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s;z-index:50}.toast.show{opacity:1;transform:none}
 @media(max-width:960px){.app{grid-template-columns:1fr}.sidebar{position:fixed;z-index:30;left:0;width:275px;transform:translateX(-105%);transition:.25s;box-shadow:20px 0 50px rgba(0,0,0,.2)}.sidebar.open{transform:none}.menu{display:grid;place-items:center}.workspace{grid-template-columns:1fr}.right{grid-template-columns:repeat(3,1fr)}}@media(max-width:700px){main{padding:18px 15px 35px}.crumb{display:none}.pills .pill:last-child{display:none}.heading{grid-template-columns:1fr}.lesson-count{display:none}.tabs{overflow:auto}.tab{min-width:100px;white-space:nowrap}.right{grid-template-columns:1fr}.actions{position:sticky;bottom:7px;background:rgba(255,253,248,.93);backdrop-filter:blur(8px);padding:8px;margin-inline:-8px;border-radius:14px}}
 </style>
+<style>
+.feedback{padding:15px 16px;line-height:1.7}
+.feedback.bad{color:#833b22;border:1px solid #f3c7b4}
+.feedback-title{font-size:14px;font-weight:900;margin-bottom:8px}
+.answer-key{background:#fff;padding:9px 11px;border-radius:9px;margin:8px 0;color:#8c3518}
+.explain-row,.mistake-row{margin-top:8px}
+.retry-note{margin-top:11px;padding:9px 11px;border-radius:9px;background:#ffe1d1;color:#7d351e;font-weight:700}
+.adaptive-note{margin:-8px 0 18px;padding:10px 12px;border:1px dashed #efb08f;border-radius:11px;background:#fff8f3;color:#81513f;font-size:11px;line-height:1.55}
+.adaptive-note b{color:var(--orange2)}
+</style>
 </head>
 <body>
 <div class="app">
@@ -59,7 +69,7 @@ main{padding:26px clamp(22px,4vw,62px) 54px;min-width:0}.top{display:flex;align-
   </div>
 </div>
 <div class="right">
-  <div class="mini"><div class="mini-head"><h3>本课掌握度</h3><span id="scoreText">0 / 6</span></div><div class="master"><div class="ring" id="ring"><b id="ringPercent">0%</b></div><div class="master-copy"><b id="masterTitle">刚刚开始</b><span id="masterCopy">完成练习后，这里会记录你的掌握情况。</span></div></div></div>
+  <div class="mini"><div class="mini-head"><h3>本课掌握度</h3><span id="scoreText">0 / 8</span></div><div class="master"><div class="ring" id="ring"><b id="ringPercent">0%</b></div><div class="master-copy"><b id="masterTitle">刚刚开始</b><span id="masterCopy">答错后会自动安排同类强化题。</span></div></div></div>
   <div class="mini"><div class="mini-head"><h3>本课知识点</h3><span>3 项</span></div><div class="skills"><div class="skill"><i>Aa</i><span>变量命名</span><small>基础</small></div><div class="skill"><i>#</i><span>常见数据类型</span><small>核心</small></div><div class="skill"><i>=</i><span>赋值与输出</span><small>核心</small></div></div></div>
   <div class="mini daily"><h3>每日 10 分钟</h3><p>不用一次学很多。保持连续练习，比偶尔突击更有效。</p><button id="dailyBtn">记下今天 ✓</button></div>
 </div>
@@ -111,5 +121,6 @@ el("#dailyBtn").onclick=function(){var d=new Date().toDateString();if(localStora
 el("#menuBtn").onclick=function(){el("#sidebar").classList.toggle("open")};els(".stage").forEach(function(b,i){b.onclick=function(){if(i===0)return;if(i===1&&state.challenge)toast("第二阶段将在完整课程中继续");else toast("先完成当前阶段的综合挑战来解锁")}});
 if(state.challenge)unlock();render();updateStats();
 </script>
+<script src="app-v2.js"></script>
 </body>
 </html>
