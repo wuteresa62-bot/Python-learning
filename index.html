@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零开始的互动式 Python 学习平台">
+<title>Py阶梯 · 互动式 Python 学习</title>
+<style>
+:root{--ink:#172231;--muted:#68717d;--paper:#f6f2e9;--card:#fffdf8;--line:#e4dccf;--navy:#172c43;--orange:#f2683e;--orange2:#d84e25;--soft:#ffe5d6;--green:#178661;--gsoft:#dff4ea;--shadow:0 18px 55px rgba(48,35,20,.09)}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 0,rgba(242,104,62,.1),transparent 28rem),var(--paper);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}.app{display:grid;grid-template-columns:275px 1fr;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}
+.sidebar{height:100vh;position:sticky;top:0;overflow:auto;background:var(--navy);color:white;padding:28px 20px}.brand{display:flex;align-items:center;gap:12px;margin:0 8px 32px}.logo{width:44px;height:44px;border-radius:14px;background:var(--orange);display:grid;place-items:center;font-weight:900;font-family:monospace;transform:rotate(-3deg)}.brand b{display:block;font-size:20px}.brand small{color:#95a8bb;letter-spacing:.13em;font-size:9px}.side-label{color:#8ba0b4;font-size:10px;letter-spacing:.18em;font-weight:800;margin:0 10px 11px}.route{display:grid;gap:7px}.stage{border:0;background:transparent;color:#bcc9d5;width:100%;display:grid;grid-template-columns:34px 1fr auto;gap:10px;text-align:left;align-items:center;padding:10px;border-radius:14px}.stage:hover,.stage.active{background:rgba(255,255,255,.09);color:#fff}.stage-no{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);font:600 12px monospace}.stage.active .stage-no{background:var(--orange)}.stage-name{font-size:13px;font-weight:700}.stage-name small{display:block;color:#8196aa;font-size:10px;margin-top:3px;font-weight:400}.lock{font-size:11px;color:#7e92a5}.overall{margin-top:28px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);padding:16px;border-radius:16px}.overall-top{display:flex;justify-content:space-between;color:#aebdca;font-size:11px}.overall-top b{font:700 17px monospace;color:white}.bar{height:7px;background:rgba(255,255,255,.11);border-radius:9px;margin-top:10px;overflow:hidden}.bar span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--orange),#f5bf45);transition:.4s}
+main{padding:26px clamp(22px,4vw,62px) 54px;min-width:0}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:34px}.crumb{font-size:12px;color:var(--muted)}.crumb b{color:var(--orange2)}.pills{display:flex;gap:8px}.pill{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:8px 12px;font-size:11px;font-weight:800}.menu{display:none;border:1px solid var(--line);background:var(--card);border-radius:11px;width:40px;height:40px}.heading{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;margin-bottom:25px}.eyebrow{font-size:11px;color:var(--orange2);font-weight:900;letter-spacing:.15em;margin-bottom:9px}h1{font-size:clamp(31px,4vw,48px);letter-spacing:-.05em;margin:0;line-height:1.08}.lead{max-width:680px;color:var(--muted);line-height:1.75;margin:12px 0 0}.lesson-count{width:91px;height:91px;border-radius:50%;background:var(--soft);border:1px solid #f4c4ad;display:grid;place-items:center;text-align:center}.lesson-count b{display:block;font:700 20px monospace}.lesson-count small{color:var(--orange2);font-size:9px}
+.workspace{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(285px,.7fr);gap:21px;align-items:start}.panel,.mini{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:21px}.panel{overflow:hidden}.tabs{display:flex;gap:4px;padding:10px;border-bottom:1px solid var(--line);background:#faf7f0}.tab{flex:1;border:0;background:transparent;color:var(--muted);padding:10px;border-radius:11px;font-size:12px;font-weight:800}.tab.active{background:white;color:var(--ink);box-shadow:0 2px 9px rgba(30,20,10,.07)}.tab-panel{display:none;padding:clamp(22px,4vw,37px)}.tab-panel.active{display:block}.tab-panel h2{margin:0 0 15px;font-size:clamp(21px,2.6vw,28px);line-height:1.4}.copy{color:#515b68;line-height:1.8;margin:0 0 20px}.code{background:#142437;color:#edf4f8;border-radius:15px;padding:21px;font:13px/1.75 ui-monospace,monospace;overflow:auto}.cm{color:#71869a}.str{color:#f4c968}.num{color:#73d3b1}.kw{color:#ff8969}.tip{display:grid;grid-template-columns:34px 1fr;gap:11px;background:var(--gsoft);color:#216d53;padding:16px;border-radius:14px;margin-top:19px;font-size:12px;line-height:1.65}.tip i{font-style:normal;width:34px;height:34px;background:white;border-radius:10px;display:grid;place-items:center}
+.qtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.qtype{background:var(--soft);color:var(--orange2);border-radius:30px;padding:7px 10px;font-size:10px;font-weight:900}.qindex{font:500 11px monospace;color:var(--muted)}pre{background:#f2eee6;border:1px solid var(--line);padding:15px;border-radius:12px;font:13px/1.6 monospace;white-space:pre-wrap}.choices{display:grid;gap:9px}.choice{width:100%;display:flex;align-items:center;gap:11px;border:1.5px solid var(--line);background:white;color:var(--ink);border-radius:13px;padding:13px 15px;text-align:left}.choice:hover{border-color:#efaa8b}.choice.selected{border-color:var(--orange);background:#fff7f2}.choice.correct{border-color:var(--green);background:var(--gsoft)}.choice.wrong{border-color:#c64e47;background:#fff0ed}.letter{width:28px;height:28px;border-radius:8px;background:#f0ece4;display:grid;place-items:center;font:600 11px monospace}.answer,.editor{width:100%;border:1.5px solid var(--line);outline:0;border-radius:13px;padding:14px;background:white}.answer:focus,.editor:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(242,104,62,.1)}.editor{min-height:170px;background:#142437;color:white;font:13px/1.7 monospace;resize:vertical}.feedback{display:none;border-radius:13px;padding:13px 15px;margin-top:15px;font-size:12px;line-height:1.6}.feedback.show{display:block}.feedback.good{background:var(--gsoft);color:#176b4d}.feedback.bad{background:#fff0e8;color:#98401f}.actions{display:flex;justify-content:space-between;gap:10px;margin-top:23px}.btn{border:0;border-radius:12px;padding:11px 16px;font-size:12px;font-weight:900}.primary{background:var(--orange);color:white;box-shadow:0 7px 18px rgba(242,104,62,.2)}.primary:hover{background:var(--orange2)}.secondary{background:#f0ece4;color:var(--muted)}.btn:disabled{opacity:.45}
+.right{display:grid;gap:17px}.mini{padding:19px;box-shadow:none}.mini-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.mini h3{margin:0;font-size:13px}.mini-head span{font:500 10px monospace;color:var(--muted)}.master{display:flex;align-items:center;gap:16px}.ring{--p:0;width:76px;height:76px;border-radius:50%;background:conic-gradient(var(--green) calc(var(--p)*1%),#e9e4da 0);display:grid;place-items:center;position:relative;flex:0 0 auto}.ring:after{content:"";position:absolute;inset:8px;background:var(--card);border-radius:50%}.ring b{z-index:1;font:700 15px monospace}.master-copy b{display:block;font-size:13px;margin-bottom:5px}.master-copy span{font-size:11px;color:var(--muted);line-height:1.55}.skills{display:grid;gap:11px}.skill{display:grid;grid-template-columns:23px 1fr auto;gap:9px;align-items:center;font-size:11px}.skill i{font-style:normal;width:22px;height:22px;background:var(--soft);color:var(--orange2);border-radius:7px;display:grid;place-items:center;font-size:9px}.skill small{color:var(--muted)}.daily{background:var(--navy);color:white;border-color:var(--navy);position:relative;overflow:hidden}.daily:after{content:"</>";position:absolute;right:-7px;bottom:-18px;font:700 50px monospace;color:rgba(255,255,255,.06)}.daily p{color:#aab9c7;font-size:11px;line-height:1.65}.daily button{border:0;background:var(--orange);color:white;padding:9px 11px;border-radius:9px;font-size:10px;font-weight:900;position:relative;z-index:1}.toast{position:fixed;right:22px;bottom:22px;background:var(--ink);color:white;border-radius:12px;padding:12px 15px;font-size:11px;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s;z-index:50}.toast.show{opacity:1;transform:none}
+@media(max-width:960px){.app{grid-template-columns:1fr}.sidebar{position:fixed;z-index:30;left:0;width:275px;transform:translateX(-105%);transition:.25s;box-shadow:20px 0 50px rgba(0,0,0,.2)}.sidebar.open{transform:none}.menu{display:grid;place-items:center}.workspace{grid-template-columns:1fr}.right{grid-template-columns:repeat(3,1fr)}}@media(max-width:700px){main{padding:18px 15px 35px}.crumb{display:none}.pills .pill:last-child{display:none}.heading{grid-template-columns:1fr}.lesson-count{display:none}.tabs{overflow:auto}.tab{min-width:100px;white-space:nowrap}.right{grid-template-columns:1fr}.actions{position:sticky;bottom:7px;background:rgba(255,253,248,.93);backdrop-filter:blur(8px);padding:8px;margin-inline:-8px;border-radius:14px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">Py</div><div><b>Py阶梯</b><small>LEARN · TRY · GROW</small></div></div>
+  <div class="side-label">学习路线</div>
+  <nav class="route">
+    <button class="stage active" data-stage="0"><span class="stage-no">01</span><span class="stage-name">初识 Python<small>变量 · 类型 · 运算</small></span><span>→</span></button>
+    <button class="stage" data-stage="1"><span class="stage-no">02</span><span class="stage-name">控制流程<small>条件 · 循环</small></span><span class="lock">🔒</span></button>
+    <button class="stage" data-stage="2"><span class="stage-no">03</span><span class="stage-name">数据容器<small>列表 · 字典 · 集合</small></span><span class="lock">🔒</span></button>
+    <button class="stage" data-stage="3"><span class="stage-no">04</span><span class="stage-name">函数思维<small>参数 · 返回值 · 复用</small></span><span class="lock">🔒</span></button>
+    <button class="stage" data-stage="4"><span class="stage-no">05</span><span class="stage-name">面向对象<small>类 · 对象 · 继承</small></span><span class="lock">🔒</span></button>
+    <button class="stage" data-stage="5"><span class="stage-no">06</span><span class="stage-name">实战项目<small>做一个命令行游戏</small></span><span class="lock">🔒</span></button>
+  </nav>
+  <div class="overall"><div class="overall-top"><span>本课进度</span><b id="sidePercent">0%</b></div><div class="bar"><span id="sideBar"></span></div></div>
+</aside>
+<main>
+<header class="top"><div style="display:flex;align-items:center;gap:12px"><button class="menu" id="menuBtn" aria-label="打开目录">☰</button><div class="crumb">课程 / 初识 Python / <b>变量与数据类型</b></div></div><div class="pills"><div class="pill">🔥 <span id="streak">1 天</span></div><div class="pill">⚡ <span id="xp">0 XP</span></div></div></header>
+<section class="heading"><div><div class="eyebrow">第 1 阶段 · 第 2 课</div><h1>让数据有名字</h1><p class="lead">变量就像贴了标签的小盒子。学会创建变量、辨认常见数据类型，并用它们完成你的第一段有意义的程序。</p></div><div class="lesson-count"><div><b>02/06</b><small>本阶段课程</small></div></div></section>
+<section class="workspace">
+<div class="panel">
+  <div class="tabs"><button class="tab active" data-tab="learn">① 理解概念</button><button class="tab" data-tab="practice">② 动手练习</button><button class="tab" data-tab="challenge">③ 综合挑战</button></div>
+  <div class="tab-panel active" id="learn">
+    <h2>变量：给信息贴上标签</h2>
+    <p class="copy">在 Python 中，使用 <b>=</b> 把右边的值交给左边的变量名。以后只要使用这个名字，就能找到对应的数据。变量名应清楚表达它保存了什么。</p>
+    <div class="code"><span class="cm"># 创建三个不同类型的变量</span><br>learner = <span class="str">"小明"</span>&nbsp;&nbsp;<span class="cm"># str 字符串</span><br>lessons = <span class="num">3</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># int 整数</span><br>is_ready = <span class="kw">True</span>&nbsp;<span class="cm"># bool 布尔值</span><br><br><span class="kw">print</span>(learner, <span class="str">"已完成"</span>, lessons, <span class="str">"课"</span>)</div>
+    <div class="tip"><i>💡</i><div><b>记忆窍门</b><br>看见引号，通常是字符串；没有小数点的数字是整数；True 和 False 表示“是/否”，首字母必须大写。</div></div>
+    <div class="actions"><span></span><button class="btn primary" id="startPractice">开始练习 →</button></div>
+  </div>
+  <div class="tab-panel" id="practice">
+    <div class="qtop"><span class="qtype" id="qType">单项选择</span><span class="qindex" id="qIndex">01 / 06</span></div>
+    <div id="questionBox"></div><div class="feedback" id="feedback"></div>
+    <div class="actions"><button class="btn secondary" id="prevBtn">← 上一题</button><button class="btn primary" id="checkBtn">检查答案</button><button class="btn primary" id="nextBtn" style="display:none">下一题 →</button></div>
+  </div>
+  <div class="tab-panel" id="challenge">
+    <div class="qtop"><span class="qtype">开放式编程</span><span class="qindex">BOSS 关卡</span></div>
+    <h2>制作一张“学习名片”</h2>
+    <p class="copy">创建变量 name、days 和 goal，分别保存你的名字、已学习天数和目标。最后用 print() 输出一行自我介绍。</p>
+    <textarea class="editor" id="challengeCode" spellcheck="false">name = "阿沐"&#10;days = 1&#10;goal = "做出自己的小工具"&#10;&#10;print(name, "已学习", days, "天，目标是：", goal)</textarea>
+    <div class="feedback" id="challengeFeedback"></div>
+    <div class="actions"><button class="btn secondary" id="showExample">查看参考思路</button><button class="btn primary" id="checkChallenge">提交作品</button></div>
+  </div>
+</div>
+<div class="right">
+  <div class="mini"><div class="mini-head"><h3>本课掌握度</h3><span id="scoreText">0 / 6</span></div><div class="master"><div class="ring" id="ring"><b id="ringPercent">0%</b></div><div class="master-copy"><b id="masterTitle">刚刚开始</b><span id="masterCopy">完成练习后，这里会记录你的掌握情况。</span></div></div></div>
+  <div class="mini"><div class="mini-head"><h3>本课知识点</h3><span>3 项</span></div><div class="skills"><div class="skill"><i>Aa</i><span>变量命名</span><small>基础</small></div><div class="skill"><i>#</i><span>常见数据类型</span><small>核心</small></div><div class="skill"><i>=</i><span>赋值与输出</span><small>核心</small></div></div></div>
+  <div class="mini daily"><h3>每日 10 分钟</h3><p>不用一次学很多。保持连续练习，比偶尔突击更有效。</p><button id="dailyBtn">记下今天 ✓</button></div>
+</div>
+</section>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var questions=[
+ {type:"单项选择",title:"下面哪一个是合法、清晰的 Python 变量名？",kind:"choice",options:["2nd_score","user score","user_score","class"],answer:2,explain:"user_score 使用字母和下划线，且没有以数字开头，也不是 Python 关键字。"},
+ {type:"代码填空",title:"补全代码，把数字 18 保存到变量 age 中。",kind:"input",code:"age ___ 18",answer:"=",explain:"= 是赋值运算符，把右边的 18 交给左边的 age。"},
+ {type:"判断输出",title:"运行下面的代码，会输出什么？",kind:"input",code:"city = \"杭州\"\nyear = 2026\nprint(city, year)",answer:"杭州 2026",explain:"print() 接收多个值时，默认用一个空格分隔。"},
+ {type:"多项选择",title:"哪些值属于字符串（str）？",kind:"multi",options:["\"42\"","42","\"Python\"","True"],answer:[0,2],explain:"被引号包围的内容属于字符串，即使引号里看起来是数字。"},
+ {type:"找出错误",title:"这段代码为什么会报错？",kind:"choice",code:"is_fun = true\\nprint(is_fun)",options:["变量名太短","true 应写成 True","print 不能输出变量","= 应写成 =="],answer:1,explain:"Python 的布尔值是 True 和 False，首字母必须大写。"},
+ {type:"代码填空",title:"让程序输出“我学了 5 课”。填写缺少的变量名。",kind:"input",code:"lessons = 5\nprint(\"我学了\", ___, \"课\")",answer:"lessons",explain:"变量 lessons 保存了数字 5，把它交给 print() 就能输出。"}
+];
+var base={current:0,correct:[],xp:0,streak:1},state,current,selected=[],checked=false;
+try{state=Object.assign({},base,JSON.parse(localStorage.getItem("py-step-state")||"{}"))}catch(e){state=Object.assign({},base)}
+current=Math.min(state.current||0,questions.length-1);
+function el(s){return document.querySelector(s)}function els(s){return Array.from(document.querySelectorAll(s))}
+function save(){state.current=current;localStorage.setItem("py-step-state",JSON.stringify(state));updateStats()}
+function toast(s){var t=el("#toast");t.textContent=s;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1700)}
+function tab(id){els(".tab,.tab-panel").forEach(function(x){x.classList.remove("active")});el('[data-tab="'+id+'"]').classList.add("active");el("#"+id).classList.add("active")}
+els(".tab").forEach(function(b){b.onclick=function(){tab(b.dataset.tab)}});el("#startPractice").onclick=function(){tab("practice")};
+function safe(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function render(){
+ var q=questions[current],html="<h2>"+q.title+"</h2>";checked=false;selected=[];
+ if(q.code)html+="<pre>"+safe(q.code)+"</pre>";
+ if(q.kind==="choice"||q.kind==="multi")html+='<div class="choices">'+q.options.map(function(o,i){return '<button class="choice" data-i="'+i+'"><span class="letter">'+String.fromCharCode(65+i)+'</span><span>'+safe(o)+"</span></button>"}).join("")+"</div>";
+ else html+='<input class="answer" id="answerInput" autocomplete="off" placeholder="在这里输入答案">';
+ el("#questionBox").innerHTML=html;el("#qType").textContent=q.type;el("#qIndex").textContent=("0"+(current+1)).slice(-2)+" / 06";el("#feedback").className="feedback";el("#checkBtn").style.display="inline-block";el("#nextBtn").style.display="none";el("#nextBtn").textContent="下一题 →";el("#prevBtn").disabled=current===0;
+ els(".choice").forEach(function(b){b.onclick=function(){if(checked)return;var i=Number(b.dataset.i);if(q.kind==="choice"){selected=[i];els(".choice").forEach(function(x){x.classList.toggle("selected",x===b)})}else{if(selected.indexOf(i)>-1)selected=selected.filter(function(x){return x!==i});else selected.push(i);b.classList.toggle("selected")}}});
+ if(el("#answerInput"))el("#answerInput").onkeydown=function(e){if(e.key==="Enter")check()};
+}
+function check(){
+ var q=questions[current],ok=false,input=el("#answerInput");
+ if(q.kind==="choice")ok=selected[0]===q.answer;else if(q.kind==="multi")ok=selected.slice().sort().join(",")===q.answer.slice().sort().join(",");else ok=input.value.trim().replace(/\s+/g," ")===q.answer;
+ if((q.kind==="choice"||q.kind==="multi")&&!selected.length){toast("先选一个答案吧");return}if(q.kind==="input"&&!input.value.trim()){toast("先写下你的答案吧");return}
+ checked=true;if(q.kind!=="input")els(".choice").forEach(function(b){var i=Number(b.dataset.i),answers=Array.isArray(q.answer)?q.answer:[q.answer];if(answers.indexOf(i)>-1)b.classList.add("correct");else if(selected.indexOf(i)>-1)b.classList.add("wrong")});
+ var f=el("#feedback");f.className="feedback show "+(ok?"good":"bad");f.innerHTML="<b>"+(ok?"答对了！+20 XP":"再想一步")+"</b><br>"+q.explain;
+ if(ok&&state.correct.indexOf(current)===-1){state.correct.push(current);state.xp+=20;save()}el("#checkBtn").style.display="none";el("#nextBtn").style.display="inline-block";if(current===5)el("#nextBtn").textContent="进入挑战 →";
+}
+el("#checkBtn").onclick=check;el("#prevBtn").onclick=function(){if(current>0){current--;render();save()}};el("#nextBtn").onclick=function(){if(current<5){current++;render();save()}else tab("challenge")};
+function updateStats(){var n=state.correct.length,p=Math.round(n/6*100);el("#xp").textContent=state.xp+" XP";el("#scoreText").textContent=n+" / 6";el("#ring").style.setProperty("--p",p);el("#ringPercent").textContent=p+"%";el("#sidePercent").textContent=p+"%";el("#sideBar").style.width=p+"%";el("#masterTitle").textContent=p===100?"稳稳掌握！":p>=60?"渐入佳境":p>0?"正在进步":"刚刚开始";el("#masterCopy").textContent=p===100?"去完成综合挑战，解锁下一阶段。":p>=60?"再完成几题，就能解锁挑战。":"完成练习后，这里会记录你的掌握情况。"}
+function unlock(){el('[data-stage="1"] .lock').textContent="→"}
+el("#checkChallenge").onclick=function(){var code=el("#challengeCode").value,hits=[/\bname\s*=/.test(code),/\bdays\s*=/.test(code),/\bgoal\s*=/.test(code),/print\s*\(/.test(code)],n=hits.filter(Boolean).length,f=el("#challengeFeedback");f.className="feedback show "+(n===4?"good":"bad");f.innerHTML=n===4?"<b>结构完整，作品通过！+50 XP</b><br>你创建了 3 个变量，也用 print() 完成了输出。试着换成自己的信息吧。":"<b>已经完成 "+n+"/4 个要求</b><br>检查 name、days、goal 三个变量和 print()。";if(n===4&&!state.challenge){state.challenge=true;state.xp+=50;save();unlock();toast("恭喜通关！下一阶段已点亮")}};
+el("#showExample").onclick=function(){el("#challengeCode").value='name = "小雨"\ndays = 7\ngoal = "独立写一个小游戏"\n\nprint(name, "已学习", days, "天，目标是：", goal)';toast("已放入参考思路，你可以继续改写")};
+el("#dailyBtn").onclick=function(){var d=new Date().toDateString();if(localStorage.getItem("py-step-daily")!==d){localStorage.setItem("py-step-daily",d);state.xp+=10;save();toast("今日打卡成功，+10 XP")}else toast("今天已经打过卡啦")};
+el("#menuBtn").onclick=function(){el("#sidebar").classList.toggle("open")};els(".stage").forEach(function(b,i){b.onclick=function(){if(i===0)return;if(i===1&&state.challenge)toast("第二阶段将在完整课程中继续");else toast("先完成当前阶段的综合挑战来解锁")}});
+if(state.challenge)unlock();render();updateStats();
+</script>
+</body>
+</html>
