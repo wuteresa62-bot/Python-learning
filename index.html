@@ -63,9 +63,11 @@ main{padding:26px clamp(22px,4vw,62px) 54px;min-width:0}.top{display:flex;align-
     <div class="qtop"><span class="qtype">开放式编程</span><span class="qindex">BOSS 关卡</span></div>
     <h2>制作一张“学习名片”</h2>
     <p class="copy">创建变量 name、days 和 goal，分别保存你的名字、已学习天数和目标。最后用 print() 输出一行自我介绍。</p>
-    <textarea class="editor" id="challengeCode" spellcheck="false">name = "阿沐"&#10;days = 1&#10;goal = "做出自己的小工具"&#10;&#10;print(name, "已学习", days, "天，目标是：", goal)</textarea>
+    <div class="adaptive-note" id="challengePrompt"><b>编程提示</b> 先想清楚要保存哪些信息、每条信息适合哪种数据类型，再决定输出顺序。这里仅提示解题方向，不提供成品代码。</div>
+    <textarea class="editor" id="challengeCode" spellcheck="false" aria-describedby="challengePrompt" placeholder="请从空白开始编写你的程序……"></textarea>
+    <div class="feedback" id="challengeHint"></div>
     <div class="feedback" id="challengeFeedback"></div>
-    <div class="actions"><button class="btn secondary" id="showExample">查看参考思路</button><button class="btn primary" id="checkChallenge">提交作品</button></div>
+    <div class="actions"><button class="btn secondary" id="showExample">查看分步提示</button><button class="btn primary" id="checkChallenge">提交作品</button></div>
   </div>
 </div>
 <div class="right">
@@ -116,7 +118,7 @@ el("#checkBtn").onclick=check;el("#prevBtn").onclick=function(){if(current>0){cu
 function updateStats(){var n=state.correct.length,p=Math.round(n/6*100);el("#xp").textContent=state.xp+" XP";el("#scoreText").textContent=n+" / 6";el("#ring").style.setProperty("--p",p);el("#ringPercent").textContent=p+"%";el("#sidePercent").textContent=p+"%";el("#sideBar").style.width=p+"%";el("#masterTitle").textContent=p===100?"稳稳掌握！":p>=60?"渐入佳境":p>0?"正在进步":"刚刚开始";el("#masterCopy").textContent=p===100?"去完成综合挑战，解锁下一阶段。":p>=60?"再完成几题，就能解锁挑战。":"完成练习后，这里会记录你的掌握情况。"}
 function unlock(){el('[data-stage="1"] .lock').textContent="→"}
 el("#checkChallenge").onclick=function(){var code=el("#challengeCode").value,hits=[/\bname\s*=/.test(code),/\bdays\s*=/.test(code),/\bgoal\s*=/.test(code),/print\s*\(/.test(code)],n=hits.filter(Boolean).length,f=el("#challengeFeedback");f.className="feedback show "+(n===4?"good":"bad");f.innerHTML=n===4?"<b>结构完整，作品通过！+50 XP</b><br>你创建了 3 个变量，也用 print() 完成了输出。试着换成自己的信息吧。":"<b>已经完成 "+n+"/4 个要求</b><br>检查 name、days、goal 三个变量和 print()。";if(n===4&&!state.challenge){state.challenge=true;state.xp+=50;save();unlock();toast("恭喜通关！下一阶段已点亮")}};
-el("#showExample").onclick=function(){el("#challengeCode").value='name = "小雨"\ndays = 7\ngoal = "独立写一个小游戏"\n\nprint(name, "已学习", days, "天，目标是：", goal)';toast("已放入参考思路，你可以继续改写")};
+el("#showExample").onclick=function(){var h=el("#challengeHint");h.className="feedback show good";h.innerHTML="<b>分步提示（不是答案）</b><br>① 先为姓名、学习天数和学习目标准备三个变量。<br>② 想一想：哪些内容需要引号，哪些内容可以直接写成数字。<br>③ 最后调用 print()，按你希望阅读的顺序输出这些信息。";toast("提示已展开，编辑区内容不会被改动")};
 el("#dailyBtn").onclick=function(){var d=new Date().toDateString();if(localStorage.getItem("py-step-daily")!==d){localStorage.setItem("py-step-daily",d);state.xp+=10;save();toast("今日打卡成功，+10 XP")}else toast("今天已经打过卡啦")};
 el("#menuBtn").onclick=function(){el("#sidebar").classList.toggle("open")};els(".stage").forEach(function(b,i){b.onclick=function(){if(i===0)return;if(i===1&&state.challenge)toast("第二阶段将在完整课程中继续");else toast("先完成当前阶段的综合挑战来解锁")}});
 if(state.challenge)unlock();render();updateStats();
