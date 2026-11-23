@@ -1,0 +1,207 @@
+window.PY_CURRICULUM = [
+  {
+    "id": "basics",
+    "title": "初识 Python",
+    "navSubtitle": "变量 · 类型 · 输出",
+    "eyebrow": "第 1 单元 · Python 基础",
+    "lead": "学会给数据命名、辨认常见类型，并用输出语句表达程序结果。",
+    "learnTitle": "变量：给信息贴上标签",
+    "learnCopy": "使用 = 把右边的值保存到左边的变量中。变量名要清楚表达用途；字符串需要引号，整数不需要引号，True 和 False 表示真假。",
+    "example": "learner = \"小明\"\nlessons = 3\nis_ready = True\nprint(learner, lessons, is_ready)",
+    "tip": "变量名不能以数字开头，也不能使用 Python 关键字。先理解数据的含义，再决定变量名和数据类型。",
+    "skills": ["变量命名", "赋值与输出", "数据类型与布尔值"],
+    "starter": ["name-1", "assign-1", "output-1", "type-1", "bool-1", "output-3", "name-4", "type-2"],
+    "questions": [
+      {"id":"name-1","skill":"变量命名","type":"单项选择","kind":"choice","title":"下面哪一个是合法、清晰的 Python 变量名？","options":["2nd_score","user score","user_score","class"],"answer":2,"hint":"逐项检查是否以数字开头、是否包含空格、是否为关键字。","explain":"Python 变量名可以包含字母、数字和下划线，但不能以数字开头，也不能使用 class 这样的关键字。user_score 同时清楚表达了变量用途。","optionNotes":["变量名不能以数字开头。","变量名中不能包含空格。","","class 是 Python 关键字，不能用作普通变量名。"]},
+      {"id":"name-2","skill":"变量命名","type":"同类强化","kind":"choice","title":"要保存购物车的商品总价，哪个变量名最合适？","options":["x","total_price","1price","total-price"],"answer":1,"hint":"合法只是第一步，还要让别人看懂变量保存了什么。","explain":"total_price 使用下划线连接单词，符合 Python 常见命名习惯，而且一眼就能看出它保存的是总价。","optionNotes":["x 虽然合法，但含义不清楚。","","变量名不能以数字开头。","连字符 - 会被当作减号。"]},
+      {"id":"name-3","skill":"变量命名","type":"同类强化","kind":"choice","title":"下面哪个变量名会因为以数字开头而报错？","options":["score2","score_2","2_score","second_score"],"answer":2,"hint":"数字可以出现，但不能放在变量名的第一个位置。","explain":"2_score 以数字 2 开头，因此不是合法变量名；数字可以出现在变量名中，但不能放在第一位。","optionNotes":["这个名称合法，数字没有放在开头。","这个名称合法。","","这个名称合法且含义清楚。"]},
+      {"id":"name-4","skill":"变量命名","type":"多项选择","kind":"multi","title":"选出所有合法的 Python 变量名。","options":["student_name","student-name","_score","for"],"answer":[0,2],"hint":"检查连字符和 Python 关键字。","explain":"student_name 和 _score 都合法；连字符会被解释为减号，而 for 是 Python 关键字。"},
+      {"id":"name-5","skill":"变量命名","type":"同类强化","kind":"choice","title":"保存用户是否已经登录，哪个名字最容易理解？","options":["a","login","is_logged_in","user1"],"answer":2,"hint":"表示真假状态的变量常以 is_ 或 has_ 开头。","explain":"布尔变量常用 is_、has_ 等开头。is_logged_in 能直接表达“是否已登录”。","optionNotes":["含义太模糊。","login 更像动作，不能明确表示真假状态。","","user1 看不出保存的是登录状态。"]},
+      {"id":"assign-1","skill":"赋值","type":"代码填空","kind":"input","title":"补全代码，把数字 18 保存到变量 age 中。","code":"age ___ 18","answer":"=","hint":"赋值使用一个等号。","explain":"单个等号 = 是赋值运算符：把右边的值 18 保存到左边的变量 age 中。"},
+      {"id":"assign-2","skill":"赋值","type":"同类强化","kind":"input","title":"补全代码，把字符串“小林”保存到 name 中。","code":"name ___ \"小林\"","answer":"=","hint":"左边是变量，右边是要保存的值。","explain":"这里是在创建变量并保存数据，所以使用赋值运算符 =。"},
+      {"id":"assign-3","skill":"赋值","type":"判断输出","kind":"input","title":"变量可以被更新。下面代码输出什么？","code":"score = 5\nscore = score + 2\nprint(score)","answer":"7","hint":"逐行追踪 score 每一次保存的值。","explain":"第一行 score 是 5；第二行先计算右边的 5 + 2，再把结果 7 重新保存到 score。"},
+      {"id":"assign-4","skill":"赋值","type":"找出错误","kind":"choice","title":"哪一行代码正确地把 10 保存到 count？","options":["10 = count","count == 10","count = 10","count :=: 10"],"answer":2,"hint":"变量写在左边，值写在右边。","explain":"赋值时变量名写在左边，值写在右边，中间使用一个等号。","optionNotes":["赋值方向反了，值不能放在左边。","== 用于比较两个值是否相等，不是普通赋值。","","Python 没有 :=: 这种写法。"]},
+      {"id":"assign-5","skill":"赋值","type":"同类强化","kind":"input","title":"运行后 points 的最终值是多少？","code":"points = 10\npoints = 3\nprint(points)","answer":"3","hint":"后一次赋值会替换同一变量之前的值。","explain":"后一次赋值会替换变量原先保存的值，因此 points 最终是 3。"},
+      {"id":"type-1","skill":"数据类型","type":"多项选择","kind":"multi","title":"哪些值属于字符串（str）？","options":["\"42\"","42","\"Python\"","True"],"answer":[0,2],"hint":"字符串最明显的标志是被引号包围。","explain":"字符串必须被引号包围。即使内容看起来像数字，只要有引号，仍然是字符串。"},
+      {"id":"type-2","skill":"数据类型","type":"同类强化","kind":"choice","title":"值 3.14 属于哪一种数据类型？","options":["str 字符串","int 整数","float 浮点数","bool 布尔值"],"answer":2,"hint":"观察这个值是否带有小数点。","explain":"带小数点的数字通常属于 float（浮点数）类型。","optionNotes":["它没有引号，不是字符串。","int 是没有小数部分的整数。","","bool 只有 True 和 False 两个值。"]},
+      {"id":"type-3","skill":"数据类型","type":"同类强化","kind":"choice","title":"下面哪个值是整数（int）？","options":["\"8\"","8","8.0","False"],"answer":1,"hint":"整数没有引号，也没有小数点。","explain":"8 没有引号也没有小数点，是整数；\"8\" 是字符串，8.0 是浮点数。","optionNotes":["有引号，所以是字符串。","","有小数点，所以是 float。","False 是布尔值。"]},
+      {"id":"type-4","skill":"数据类型","type":"判断输出","kind":"input","title":"下面代码会输出什么数据类型名称？","code":"value = \"12\"\nprint(type(value).__name__)","answer":"str","hint":"不要被内容 12 迷惑，先看它有没有引号。","explain":"12 被引号包围，因此 value 保存的是字符串，类型名称为 str。"},
+      {"id":"type-5","skill":"数据类型","type":"多项选择","kind":"multi","title":"选出所有布尔值（bool）。","options":["True","False","\"True\"","0"],"answer":[0,1],"hint":"标准布尔值只有两个，并且首字母大写。","explain":"Python 的布尔值只有 True 和 False，而且首字母必须大写；带引号的 \"True\" 是字符串。"},
+      {"id":"output-1","skill":"输出","type":"判断输出","kind":"input","title":"运行下面的代码，会输出什么？","code":"city = \"杭州\"\nyear = 2026\nprint(city, year)","answer":"杭州 2026","hint":"print() 输出多个值时默认用一个空格分隔。","explain":"print() 接收多个值时，默认在值之间加入一个空格。"},
+      {"id":"output-2","skill":"输出","type":"同类强化","kind":"input","title":"运行下面代码，完整输出是什么？","code":"name = \"小雨\"\nlessons = 4\nprint(name, \"完成了\", lessons, \"课\")","answer":"小雨 完成了 4 课","hint":"按 print() 中参数出现的顺序写出结果。","explain":"print() 中的四个值按顺序输出，彼此之间默认用一个空格分隔。"},
+      {"id":"output-3","skill":"输出","type":"代码填空","kind":"input","title":"让程序输出“我学了 5 课”。填写缺少的变量名。","code":"lessons = 5\nprint(\"我学了\", ___, \"课\")","answer":"lessons","hint":"找出保存数字 5 的变量。","explain":"变量 lessons 保存了数字 5，把它传给 print() 就能输出对应的值。"},
+      {"id":"output-4","skill":"输出","type":"找出错误","kind":"choice","title":"想输出变量 name 的值，哪种写法正确？","options":["print(\"name\")","print(name)","output(name)","print = name"],"answer":1,"hint":"变量名加引号后会变成普通文字。","explain":"print(name) 会读取变量的值；print(\"name\") 输出的只是文字 name。","optionNotes":["引号会让 name 变成普通字符串。","","Python 没有内置的 output() 函数。","这会尝试给 print 赋值，不是在调用函数。"]},
+      {"id":"output-5","skill":"输出","type":"同类强化","kind":"input","title":"下面代码输出什么？","code":"word = \"Py\"\nprint(word, word)","answer":"Py Py","hint":"同一个变量可以在 print() 中使用多次。","explain":"同一个变量可以多次传给 print()；两个输出值之间有一个空格。"},
+      {"id":"bool-1","skill":"布尔值","type":"找出错误","kind":"choice","title":"这段代码为什么会报错？","code":"is_fun = true\nprint(is_fun)","options":["变量名太短","true 应写成 True","print 不能输出变量","= 应写成 =="],"answer":1,"hint":"Python 对大小写敏感。","explain":"Python 的布尔值是 True 和 False，首字母必须大写。小写 true 会被当成一个未定义的变量名。","optionNotes":["is_fun 是清楚且合法的变量名。","","print 可以正常输出布尔变量。","这里是在赋值，应当使用 =。"]},
+      {"id":"bool-2","skill":"布尔值","type":"同类强化","kind":"input","title":"下面代码会输出什么？","code":"is_ready = False\nprint(is_ready)","answer":"False","hint":"print() 会直接输出变量中保存的布尔值。","explain":"变量 is_ready 保存了布尔值 False，print() 会原样输出 False。"},
+      {"id":"bool-3","skill":"布尔值","type":"同类强化","kind":"choice","title":"表示“课程已经完成”，哪一行最合适？","options":["finished = \"yes\"","is_finished = True","finished = 1.0","True = finished"],"answer":1,"hint":"选择一个清晰的变量名和标准布尔值。","explain":"is_finished 清楚表达真假状态，True 是标准布尔值。","optionNotes":["字符串 yes 可以保存信息，但不如布尔值直接。","","1.0 是浮点数。","True 是值，不能放在赋值号左边。"]},
+      {"id":"bool-4","skill":"布尔值","type":"多项选择","kind":"multi","title":"哪些写法创建了布尔变量？","options":["has_ticket = True","is_open = False","ready = \"True\"","done = 0"],"answer":[0,1],"hint":"检查等号右边是否是没有引号的 True 或 False。","explain":"只有没有引号的 True 和 False 是布尔值；\"True\" 是字符串，0 是整数。"}
+    ],
+    "challenges": [
+      {"id":"card","title":"制作学习名片","prompt":"创建变量 name、days 和 goal，分别保存你的名字、已学习天数和学习目标，最后输出一行自我介绍。","hints":["先确定三个变量分别保存什么信息。","判断哪些值需要引号，哪些值应写成整数。","最后使用 print() 按自然的阅读顺序输出。"],"checks":[{"pattern":"\\bname\\s*=","label":"创建 name 变量"},{"pattern":"\\bdays\\s*=","label":"创建 days 变量"},{"pattern":"\\bgoal\\s*=","label":"创建 goal 变量"},{"pattern":"print\\s*\\(","label":"使用 print() 输出"}]},
+      {"id":"progress","title":"制作课程进度报告","prompt":"创建 completed 和 total 保存已完成课数与总课数，再计算 remaining，最后输出进度信息。","hints":["先用两个整数变量保存已完成数量和总数量。","剩余数量可以通过一次减法得到。","输出时让读者能看懂已完成、总数和剩余数量。"],"checks":[{"pattern":"\\bcompleted\\s*=","label":"创建 completed 变量"},{"pattern":"\\btotal\\s*=","label":"创建 total 变量"},{"pattern":"\\bremaining\\s*=.*-","label":"计算 remaining"},{"pattern":"print\\s*\\(","label":"输出进度信息"}]},
+      {"id":"status","title":"制作学习状态卡","prompt":"创建 learner、lessons 和 is_ready，分别保存学习者姓名、课程数和是否准备好继续学习，最后输出状态。","hints":["三个变量应使用字符串、整数和布尔值三种不同类型。","布尔值注意首字母大写。","输出时可以一次传入多个值。"],"checks":[{"pattern":"\\blearner\\s*=","label":"创建 learner 变量"},{"pattern":"\\blessons\\s*=","label":"创建 lessons 变量"},{"pattern":"\\bis_ready\\s*=\\s*(True|False)","label":"使用布尔值设置 is_ready"},{"pattern":"print\\s*\\(","label":"输出学习状态"}]}
+    ]
+  },
+  {
+    "id": "control",
+    "title": "控制流程",
+    "navSubtitle": "条件 · 循环",
+    "eyebrow": "第 2 单元 · 控制流程",
+    "lead": "让程序根据条件作出选择，并用循环自动完成重复工作。",
+    "learnTitle": "让程序会判断、会重复",
+    "learnCopy": "if 根据条件决定是否执行代码；elif 和 else 处理其他情况。for 适合按次数或序列循环，while 适合在条件成立时持续循环。",
+    "example": "score = 82\nif score >= 60:\n    print(\"通过\")\nelse:\n    print(\"继续练习\")\n\nfor i in range(3):\n    print(i)",
+    "tip": "条件语句和循环语句末尾要有冒号，内部代码必须缩进。写循环前先明确什么时候停止。",
+    "skills": ["条件判断", "逻辑表达式", "for 与 while 循环"],
+    "starter": ["ctrl-if-1","ctrl-if-2","ctrl-logic-1","ctrl-logic-2","ctrl-for-1","ctrl-for-2","ctrl-while-1","ctrl-debug-1"],
+    "questions": [
+      {"id":"ctrl-if-1","skill":"条件判断","type":"单项选择","kind":"choice","title":"score 为 75 时，下面代码输出什么？","code":"if score >= 60:\n    print(\"通过\")\nelse:\n    print(\"未通过\")","options":["通过","未通过","60","没有输出"],"answer":0,"hint":"先判断 75 >= 60 的真假。","explain":"75 大于等于 60，条件为 True，因此执行 if 内的输出。"},
+      {"id":"ctrl-if-2","skill":"条件判断","type":"代码填空","kind":"input","title":"补全关键字：当温度大于 30 时输出“炎热”。","code":"___ temperature > 30:\n    print(\"炎热\")","answer":"if","hint":"条件判断从哪个关键字开始？","explain":"Python 使用 if 开始一个条件判断。"},
+      {"id":"ctrl-if-3","skill":"条件判断","type":"同类强化","kind":"choice","title":"if 语句的条件行末尾缺少什么会导致语法错误？","options":["分号 ;","冒号 :","逗号 ,","句号 ."],"answer":1,"hint":"观察 Python 代码块开始行的结尾。","explain":"if、elif、else、for 和 while 的代码块开始行通常以冒号结尾。"},
+      {"id":"ctrl-if-4","skill":"条件判断","type":"判断输出","kind":"input","title":"下面代码输出什么？","code":"age = 12\nif age >= 18:\n    print(\"成人\")\nelse:\n    print(\"未成年\")","answer":"未成年","hint":"12 是否大于等于 18？","explain":"条件为 False，所以程序执行 else 分支。"},
+      {"id":"ctrl-logic-1","skill":"逻辑表达式","type":"多项选择","kind":"multi","title":"哪些表达式的结果为 True？","options":["5 > 3","4 == 5","7 != 2","3 >= 8"],"answer":[0,2],"hint":"分别计算每个比较表达式。","explain":"5 > 3 和 7 != 2 为 True；其余两个比较不成立。"},
+      {"id":"ctrl-logic-2","skill":"逻辑表达式","type":"单项选择","kind":"choice","title":"要表示“年龄至少 12 岁并且已获得许可”，应使用哪个表达式？","options":["age >= 12 or allowed","age >= 12 and allowed","age = 12 and allowed","age >= 12 not allowed"],"answer":1,"hint":"两个条件必须同时成立。","explain":"and 要求左右两个条件都为 True。"},
+      {"id":"ctrl-logic-3","skill":"逻辑表达式","type":"同类强化","kind":"choice","title":"not False 的结果是什么？","options":["True","False","None","0"],"answer":0,"hint":"not 会把布尔值取反。","explain":"False 取反后得到 True。"},
+      {"id":"ctrl-logic-4","skill":"逻辑表达式","type":"代码填空","kind":"input","title":"补全运算符，使两个条件任意一个成立即可。","code":"if is_weekend ___ is_holiday:\n    print(\"可以休息\")","answer":"or","hint":"任意一个成立使用 or。","explain":"or 在至少一个条件为 True 时得到 True。"},
+      {"id":"ctrl-for-1","skill":"for 循环","type":"判断输出","kind":"input","title":"下面代码一共输出几次“练习”？","code":"for i in range(4):\n    print(\"练习\")","answer":"4","hint":"range(4) 会产生几个值？","explain":"range(4) 产生 0、1、2、3，共循环 4 次。"},
+      {"id":"ctrl-for-2","skill":"for 循环","type":"单项选择","kind":"choice","title":"哪个写法可以依次得到 1、2、3？","options":["range(3)","range(1, 4)","range(1, 3)","range(0, 4)"],"answer":1,"hint":"range 的结束值不包含在结果中。","explain":"range(1, 4) 从 1 开始，在 4 之前停止，所以得到 1、2、3。"},
+      {"id":"ctrl-while-1","skill":"while 循环","type":"找出错误","kind":"choice","title":"下面循环为什么可能永远不结束？","code":"count = 1\nwhile count <= 3:\n    print(count)","options":["缺少 print","count 没有更新","条件必须用 ==","while 后不能写冒号"],"answer":1,"hint":"每轮循环后，条件中的变量有没有变化？","explain":"count 始终是 1，条件一直为 True，因此形成无限循环。"},
+      {"id":"ctrl-debug-1","skill":"循环调试","type":"多项选择","kind":"multi","title":"检查循环是否安全时，应关注哪些问题？","options":["循环条件是否会变化","是否存在停止条件","变量名是否足够长","缩进是否正确"],"answer":[0,1,3],"hint":"从开始、重复和停止三个阶段检查。","explain":"循环条件变化、停止条件和正确缩进都会影响循环是否能正确结束。"}
+    ],
+    "challenges": [
+      {"id":"grade","title":"成绩等级判断器","prompt":"创建 score，并用 if/elif/else 输出优秀、通过或需要继续练习。","hints":["先确定三个等级的分界值。","从要求更高的条件开始判断。","每个分支都要有清楚的输出。"],"checks":[{"pattern":"\\bscore\\s*=","label":"创建 score"},{"pattern":"\\bif\\b","label":"使用 if"},{"pattern":"\\belif\\b","label":"使用 elif"},{"pattern":"\\belse\\s*:","label":"使用 else"}]},
+      {"id":"counter","title":"学习打卡计数器","prompt":"使用 for 和 range() 输出第 1 天到第 7 天的学习打卡信息。","hints":["想清楚 range() 的开始值和结束值。","循环变量表示当前第几天。","在循环内部输出打卡信息。"],"checks":[{"pattern":"\\bfor\\b","label":"使用 for 循环"},{"pattern":"range\\s*\\(","label":"使用 range()"},{"pattern":"print\\s*\\(","label":"在循环中输出"}]},
+      {"id":"countdown","title":"专注倒计时","prompt":"创建一个从 5 开始的计数器，使用 while 逐步减到 1，并在每轮输出当前数字。","hints":["先设置计数器初始值。","while 条件要保证计数器大于 0 时继续。","循环内部必须更新计数器，避免无限循环。"],"checks":[{"pattern":"\\bwhile\\b","label":"使用 while 循环"},{"pattern":"print\\s*\\(","label":"输出当前数字"},{"pattern":"(-=\\s*1|=\\s*\\w+\\s*-\\s*1)","label":"每轮减少计数器"}]}
+    ]
+  },
+  {
+    "id": "containers",
+    "title": "数据容器",
+    "navSubtitle": "列表 · 字典 · 集合",
+    "eyebrow": "第 3 单元 · 数据容器",
+    "lead": "使用列表、字典和集合组织一组数据，并完成查询、修改与遍历。",
+    "learnTitle": "把相关数据组织在一起",
+    "learnCopy": "列表按顺序保存多个值，字典使用键和值表达含义，集合适合去重。选择容器时要先考虑数据是否有顺序、是否需要通过名称查找。",
+    "example": "scores = [82, 91, 76]\nstudent = {\"name\": \"小林\", \"score\": 91}\ntags = {\"Python\", \"编程\", \"Python\"}\nprint(scores[0], student[\"name\"], tags)",
+    "tip": "列表索引从 0 开始。访问字典前要确认键存在，或使用 get() 提供默认值。",
+    "skills": ["列表", "字典", "集合与遍历"],
+    "starter": ["list-1","list-2","list-3","dict-1","dict-2","dict-3","set-1","container-debug-1"],
+    "questions": [
+      {"id":"list-1","skill":"列表","type":"单项选择","kind":"choice","title":"哪个值是 Python 列表？","options":["(1, 2, 3)","[1, 2, 3]","{1, 2, 3}","\"1, 2, 3\""],"answer":1,"hint":"列表使用方括号。","explain":"[1, 2, 3] 使用方括号，是列表。"},
+      {"id":"list-2","skill":"列表","type":"判断输出","kind":"input","title":"下面代码输出什么？","code":"colors = [\"红\", \"绿\", \"蓝\"]\nprint(colors[1])","answer":"绿","hint":"列表索引从 0 开始。","explain":"索引 0 是红，索引 1 是绿。"},
+      {"id":"list-3","skill":"列表","type":"多项选择","kind":"multi","title":"哪些操作会改变列表 items？","options":["items.append(5)","items.pop()","len(items)","items[0] = 9"],"answer":[0,1,3],"hint":"区分读取信息和修改内容。","explain":"append、pop 和索引赋值都会修改列表；len() 只返回长度。"},
+      {"id":"list-4","skill":"列表","type":"同类强化","kind":"input","title":"补全方法，把字符串 Python 添加到列表 courses 末尾。","code":"courses.___(\"Python\")","answer":"append","hint":"添加到列表末尾使用 append()。","explain":"append() 会把一个新元素添加到列表末尾。"},
+      {"id":"dict-1","skill":"字典","type":"单项选择","kind":"choice","title":"如何读取 student 字典中键 name 对应的值？","options":["student.name","student[\"name\"]","student(\"name\")","student->name"],"answer":1,"hint":"字典使用方括号和键查找。","explain":"student[\"name\"] 使用键 name 读取对应的值。"},
+      {"id":"dict-2","skill":"字典","type":"代码填空","kind":"input","title":"补全方法：当键不存在时返回 0。","code":"score = student.___(\"score\", 0)","answer":"get","hint":"get() 可以提供默认值。","explain":"字典的 get(key, default) 在键不存在时返回默认值。"},
+      {"id":"dict-3","skill":"字典","type":"多项选择","kind":"multi","title":"关于字典，哪些说法正确？","options":["通过键查找值","键通常应唯一","只能保存数字","可以新增键值对"],"answer":[0,1,3],"hint":"字典的核心是键和值的映射。","explain":"字典通过唯一键查找值，可以保存多种类型，也可以新增键值对。"},
+      {"id":"dict-4","skill":"字典","type":"同类强化","kind":"input","title":"下面代码输出什么？","code":"book = {\"title\": \"Python入门\", \"pages\": 120}\nprint(book[\"pages\"])","answer":"120","hint":"找到键 pages 对应的值。","explain":"键 pages 对应的值是整数 120。"},
+      {"id":"set-1","skill":"集合","type":"单项选择","kind":"choice","title":"集合最适合解决哪类问题？","options":["按位置重复保存数据","去除重复值","保存键值对","固定两个值"],"answer":1,"hint":"集合中的元素不重复。","explain":"集合会自动合并重复元素，常用于去重。"},
+      {"id":"set-2","skill":"集合","type":"判断输出","kind":"input","title":"下面集合的元素个数是多少？","code":"tags = {\"AI\", \"Python\", \"AI\"}\nprint(len(tags))","answer":"2","hint":"重复的 AI 在集合中只保留一份。","explain":"集合自动去重，因此只有 AI 和 Python 两个元素。"},
+      {"id":"container-loop-1","skill":"容器遍历","type":"代码填空","kind":"input","title":"补全关键字，逐个输出列表中的课程。","code":"___ course in courses:\n    print(course)","answer":"for","hint":"遍历序列通常使用 for。","explain":"for 可以依次取得列表中的每个元素。"},
+      {"id":"container-debug-1","skill":"容器调试","type":"找出错误","kind":"choice","title":"列表只有 3 个元素时，访问 items[3] 为什么报错？","options":["列表不能保存 3 个元素","有效索引是 0、1、2","索引必须是字符串","应该使用圆括号"],"answer":1,"hint":"长度为 3 的列表最后一个索引是多少？","explain":"索引从 0 开始，因此 3 个元素的有效索引是 0、1、2。"}
+    ],
+    "challenges": [
+      {"id":"scores","title":"成绩统计器","prompt":"使用列表保存至少 5 个成绩，计算总分、平均分和最高分并输出。","hints":["先把多个成绩放进同一个列表。","可以使用 sum()、len() 和 max()。","平均分需要用总分除以成绩个数。"],"checks":[{"pattern":"\\[[^\\]]*,[^\\]]*\\]","label":"创建包含多个成绩的列表"},{"pattern":"sum\\s*\\(","label":"计算总分"},{"pattern":"len\\s*\\(","label":"计算数量"},{"pattern":"max\\s*\\(","label":"计算最高分"}]},
+      {"id":"profile","title":"学生信息卡","prompt":"使用字典保存姓名、年级和最喜欢的课程，然后逐项输出这些信息。","hints":["选择清楚的键名。","通过键读取对应的值。","可以分别输出，也可以遍历字典。"],"checks":[{"pattern":"\\{[^}]*:[^}]*\\}","label":"创建字典"},{"pattern":"name|姓名","label":"保存姓名信息"},{"pattern":"grade|年级","label":"保存年级信息"},{"pattern":"print\\s*\\(","label":"输出信息"}]},
+      {"id":"dedupe","title":"兴趣标签去重器","prompt":"创建一个含有重复内容的列表，将它转换为集合完成去重，并输出去重前后的数量。","hints":["列表可以保留重复值。","set() 可以把列表转换成集合。","分别对转换前后使用 len()。"],"checks":[{"pattern":"\\[[^\\]]*,[^\\]]*\\]","label":"创建原始列表"},{"pattern":"set\\s*\\(","label":"转换为集合"},{"pattern":"len\\s*\\(","label":"比较数量"},{"pattern":"print\\s*\\(","label":"输出结果"}]}
+    ]
+  },
+  {
+    "id": "functions",
+    "title": "函数思维",
+    "navSubtitle": "参数 · 返回值 · 复用",
+    "eyebrow": "第 4 单元 · 函数思维",
+    "lead": "把重复步骤封装成函数，用参数接收数据，用返回值交回结果。",
+    "learnTitle": "把解决方法变成可复用工具",
+    "learnCopy": "def 定义函数，参数让函数处理不同数据，return 把计算结果交回调用处。函数名应表达动作，函数最好只承担一个清楚的任务。",
+    "example": "def average(total, count):\n    if count == 0:\n        return 0\n    return total / count\n\nresult = average(240, 3)\nprint(result)",
+    "tip": "print() 是展示结果，return 是把结果交给其他代码继续使用。设计函数前先写清楚输入、处理和输出。",
+    "skills": ["函数定义", "参数与返回值", "作用域与测试"],
+    "starter": ["func-1","func-2","func-3","param-1","param-2","return-1","scope-1","func-debug-1"],
+    "questions": [
+      {"id":"func-1","skill":"函数定义","type":"代码填空","kind":"input","title":"补全关键字，定义函数 greet。","code":"___ greet():\n    print(\"你好\")","answer":"def","hint":"定义函数使用 def。","explain":"Python 使用 def 关键字定义函数。"},
+      {"id":"func-2","skill":"函数定义","type":"单项选择","kind":"choice","title":"定义函数后，哪个写法会真正执行 greet？","options":["greet","greet()","def greet","run greet"],"answer":1,"hint":"调用函数需要圆括号。","explain":"greet() 表示调用并执行函数。"},
+      {"id":"func-3","skill":"函数定义","type":"多项选择","kind":"multi","title":"好的函数名通常具备哪些特点？","options":["表达函数动作","使用清楚的单词","越短越好","符合变量命名规则"],"answer":[0,1,3],"hint":"函数名首先要合法，其次要能说明用途。","explain":"函数名应合法、清楚并表达动作，不必一味追求最短。"},
+      {"id":"func-4","skill":"函数定义","type":"同类强化","kind":"choice","title":"哪一个函数名最适合计算总价？","options":["x()","calculate_total()","123total()","total-price()"],"answer":1,"hint":"选择合法并能说明动作的名称。","explain":"calculate_total 合法且清楚表达“计算总价”。"},
+      {"id":"param-1","skill":"参数","type":"判断输出","kind":"input","title":"下面代码输出什么？","code":"def greet(name):\n    print(\"你好\", name)\n\ngreet(\"小雨\")","answer":"你好 小雨","hint":"调用时的字符串会交给参数 name。","explain":"实参“小雨”传给 name，print() 输出两个值并用空格分隔。"},
+      {"id":"param-2","skill":"参数","type":"单项选择","kind":"choice","title":"函数 def add(a, b) 有几个参数？","options":["0","1","2","3"],"answer":2,"hint":"数一数括号内用逗号分隔的名称。","explain":"a 和 b 是两个参数。"},
+      {"id":"param-3","skill":"参数","type":"同类强化","kind":"input","title":"下面函数调用的结果是多少？","code":"def multiply(a, b):\n    return a * b\n\nprint(multiply(3, 4))","answer":"12","hint":"把 3 和 4 分别代入 a、b。","explain":"函数返回 3 * 4，也就是 12。"},
+      {"id":"return-1","skill":"返回值","type":"多项选择","kind":"multi","title":"关于 return，哪些说法正确？","options":["把结果交回调用处","会结束当前函数","只能返回字符串","返回值可保存到变量"],"answer":[0,1,3],"hint":"思考 return 之后调用者能得到什么。","explain":"return 交回结果并结束函数，返回值可以是多种类型，也可以保存到变量。"},
+      {"id":"return-2","skill":"返回值","type":"找出错误","kind":"choice","title":"为什么下面 result 的值是 None？","code":"def add(a, b):\n    print(a + b)\n\nresult = add(2, 3)","options":["没有参数","函数没有 return","不能使用 print","变量名错误"],"answer":1,"hint":"输出结果不等于返回结果。","explain":"函数只打印了和，没有使用 return 交回结果，因此默认返回 None。"},
+      {"id":"scope-1","skill":"作用域","type":"单项选择","kind":"choice","title":"函数内部创建的普通局部变量通常在哪里可用？","options":["整个程序任何位置","只在该函数内部","只在循环内部","只能在 print() 中"],"answer":1,"hint":"局部变量的作用范围由函数边界决定。","explain":"普通局部变量通常只在创建它的函数内部可用。"},
+      {"id":"test-1","skill":"函数测试","type":"多项选择","kind":"multi","title":"测试求平均值函数时，哪些情况值得测试？","options":["普通正数","只有一个值","空数据","包含 0"],"answer":[0,1,2,3],"hint":"既测常见情况，也测边界情况。","explain":"普通、单值、空数据和包含 0 都能帮助发现不同问题。"},
+      {"id":"func-debug-1","skill":"函数调试","type":"找出错误","kind":"choice","title":"下面代码为什么报错？","code":"def square(n)\n    return n * n","options":["缺少冒号","不能使用 return","参数必须叫 x","乘法符号错误"],"answer":0,"hint":"检查函数定义行末尾。","explain":"函数定义行 def square(n) 后必须有冒号。"}
+    ],
+    "challenges": [
+      {"id":"level","title":"学习等级函数","prompt":"编写函数 study_level(minutes)，根据学习分钟数返回“起步”“稳定”或“专注”。","hints":["先确定函数输入和返回结果。","使用 if/elif/else 设置三个区间。","每个分支使用 return 交回文字。"],"checks":[{"pattern":"def\\s+study_level\\s*\\(","label":"定义 study_level"},{"pattern":"\\bif\\b","label":"使用条件判断"},{"pattern":"\\breturn\\b","label":"返回等级"}]},
+      {"id":"summary","title":"列表统计函数","prompt":"编写函数 summarize(numbers)，返回列表中的总和、平均值和最大值，并处理空列表。","hints":["先处理空列表，避免除以 0。","非空时可以使用 sum()、len()、max()。","决定用哪种容器一次返回多个结果。"],"checks":[{"pattern":"def\\s+summarize\\s*\\(","label":"定义 summarize"},{"pattern":"if\\s+not|len\\s*\\([^)]*\\)\\s*==\\s*0","label":"处理空列表"},{"pattern":"sum\\s*\\(","label":"计算总和"},{"pattern":"return\\b","label":"返回结果"}]},
+      {"id":"formatter","title":"学习报告格式化函数","prompt":"编写函数 build_report(name, lessons, goal)，返回一段完整的学习报告文字。","hints":["函数需要三个参数。","先把数字转换为适合拼接或格式化的形式。","使用 return，而不是只在函数内打印。"],"checks":[{"pattern":"def\\s+build_report\\s*\\([^,]+,[^,]+,[^)]+\\)","label":"定义三个参数"},{"pattern":"return\\b","label":"返回报告文字"}]}
+    ]
+  },
+  {
+    "id": "oop",
+    "title": "面向对象",
+    "navSubtitle": "类 · 对象 · 继承",
+    "eyebrow": "第 5 单元 · 面向对象",
+    "lead": "用类描述一类事物的共同属性和行为，再创建具体对象解决问题。",
+    "learnTitle": "把数据和行为组织成对象",
+    "learnCopy": "class 定义类，__init__ 初始化对象，self 表示当前对象。属性保存状态，方法描述对象能做什么；继承可以复用已有类的结构。",
+    "example": "class Student:\n    def __init__(self, name):\n        self.name = name\n        self.points = 0\n\n    def add_points(self, value):\n        self.points += value",
+    "tip": "实例方法的第一个参数通常是 self。创建对象时传入的是 __init__ 中 self 之后的参数。",
+    "skills": ["类与对象", "属性与方法", "继承与封装"],
+    "starter": ["oop-class-1","oop-class-2","oop-init-1","oop-self-1","oop-method-1","oop-object-1","oop-inherit-1","oop-debug-1"],
+    "questions": [
+      {"id":"oop-class-1","skill":"类与对象","type":"代码填空","kind":"input","title":"补全关键字，定义 Student 类。","code":"___ Student:\n    pass","answer":"class","hint":"定义类使用 class。","explain":"Python 使用 class 关键字定义类。"},
+      {"id":"oop-class-2","skill":"类与对象","type":"单项选择","kind":"choice","title":"类与对象的关系最接近哪一种描述？","options":["类是具体对象，对象是模板","类是模板，对象是按模板创建的实例","两者完全相同","对象只能创建一个类"],"answer":1,"hint":"把类想成设计图。","explain":"类描述共同结构，对象是根据类创建的具体实例。"},
+      {"id":"oop-init-1","skill":"初始化","type":"单项选择","kind":"choice","title":"创建对象时通常自动调用哪个方法？","options":["__init__","__start__","__new_object__","init"],"answer":0,"hint":"初始化方法名称前后都有两个下划线。","explain":"__init__ 通常在对象创建后自动执行，用于设置初始属性。"},
+      {"id":"oop-init-2","skill":"初始化","type":"同类强化","kind":"input","title":"补全方法名。","code":"class Book:\n    def ___(self, title):\n        self.title = title","answer":"__init__","hint":"初始化方法是双下划线名称。","explain":"__init__ 用于接收参数并设置对象初始属性。"},
+      {"id":"oop-self-1","skill":"self","type":"多项选择","kind":"multi","title":"关于 self，哪些说法正确？","options":["表示当前对象","实例方法通常把它放在第一个参数位置","调用方法时通常不用手动传入","必须改名为 this"],"answer":[0,1,2],"hint":"self 是约定俗成的当前实例引用。","explain":"self 表示当前对象，通常作为实例方法第一个参数，调用时由 Python 自动传入。"},
+      {"id":"oop-method-1","skill":"属性与方法","type":"单项选择","kind":"choice","title":"在类的方法内部，如何给当前对象设置 score 属性？","options":["score = 10","self.score = 10","class.score = 10","score.self = 10"],"answer":1,"hint":"对象属性通过 self 访问。","explain":"self.score = 10 会把 score 保存到当前对象上。"},
+      {"id":"oop-method-2","skill":"属性与方法","type":"判断输出","kind":"input","title":"下面代码输出什么？","code":"class Counter:\n    def __init__(self):\n        self.value = 0\n    def add(self):\n        self.value += 1\n\nc = Counter()\nc.add()\nprint(c.value)","answer":"1","hint":"创建时 value 为 0，add() 调用一次。","explain":"add() 把 value 从 0 增加到 1。"},
+      {"id":"oop-object-1","skill":"对象创建","type":"代码填空","kind":"input","title":"已定义类 Student，补全代码创建对象。","code":"student = ___(\"小林\")","answer":"Student","hint":"调用类名就可以创建对象。","explain":"Student(\"小林\") 会创建一个 Student 实例。"},
+      {"id":"oop-inherit-1","skill":"继承","type":"单项选择","kind":"choice","title":"哪个写法表示 Dog 继承 Animal？","options":["class Dog -> Animal:","class Dog(Animal):","class Dog inherits Animal:","class Animal(Dog):"],"answer":1,"hint":"父类写在子类名后的圆括号中。","explain":"class Dog(Animal): 表示 Dog 继承 Animal。"},
+      {"id":"oop-inherit-2","skill":"继承","type":"多项选择","kind":"multi","title":"使用继承可能带来哪些好处？","options":["复用共同代码","表达类别关系","完全避免测试","在子类中扩展行为"],"answer":[0,1,3],"hint":"继承解决复用与扩展，不会消除测试需要。","explain":"继承可以复用、表达关系并扩展行为，但仍然需要测试。"},
+      {"id":"oop-encap-1","skill":"封装","type":"单项选择","kind":"choice","title":"把修改积分的规则放在 add_points() 方法中，主要体现了什么思想？","options":["随机性","封装","无限循环","类型转换"],"answer":1,"hint":"把数据和操作数据的规则放在一起。","explain":"封装把状态和相关操作组织在类中，减少外部直接修改造成的问题。"},
+      {"id":"oop-debug-1","skill":"面向对象调试","type":"找出错误","kind":"choice","title":"下面实例方法为什么调用时报错？","code":"class Greeter:\n    def hello():\n        print(\"你好\")\n\ng = Greeter()\ng.hello()","options":["缺少 self 参数","不能使用 print","类名太长","方法不能无返回值"],"answer":0,"hint":"实例方法第一个参数通常是什么？","explain":"通过对象调用实例方法时，Python 会自动传入对象，因此定义中需要 self 参数。"}
+    ],
+    "challenges": [
+      {"id":"student","title":"学生积分对象","prompt":"定义 Student 类，保存 name 和 points，并提供 add_points(value) 方法增加积分。","hints":["在 __init__ 中设置初始属性。","方法通过 self 访问当前对象。","增加积分时更新已有的 points。"],"checks":[{"pattern":"class\\s+Student\\b","label":"定义 Student 类"},{"pattern":"def\\s+__init__\\s*\\(","label":"定义初始化方法"},{"pattern":"self\\.name\\s*=","label":"保存 name 属性"},{"pattern":"def\\s+add_points\\s*\\(","label":"定义 add_points 方法"}]},
+      {"id":"book","title":"图书借阅对象","prompt":"定义 Book 类，保存 title 和 is_borrowed，并提供 borrow() 方法修改借阅状态。","hints":["借阅状态适合使用布尔值。","新书的初始状态应由 __init__ 设置。","borrow() 只负责改变当前对象的状态。"],"checks":[{"pattern":"class\\s+Book\\b","label":"定义 Book 类"},{"pattern":"self\\.title\\s*=","label":"保存 title"},{"pattern":"self\\.is_borrowed\\s*=","label":"保存借阅状态"},{"pattern":"def\\s+borrow\\s*\\(","label":"定义 borrow 方法"}]},
+      {"id":"inherit","title":"课程类型继承","prompt":"定义 Course 基类，再定义 OnlineCourse 子类继承它，并为子类增加 platform 属性。","hints":["先在基类中保存所有课程共有的信息。","子类名后的圆括号中写父类名。","子类可以调用父类初始化，再设置自己的属性。"],"checks":[{"pattern":"class\\s+Course\\b","label":"定义 Course 基类"},{"pattern":"class\\s+OnlineCourse\\s*\\(\\s*Course\\s*\\)","label":"定义继承关系"},{"pattern":"self\\.platform\\s*=","label":"增加 platform 属性"}]}
+    ]
+  },
+  {
+    "id": "project",
+    "title": "实战项目",
+    "navSubtitle": "拆解 · 调试 · 测试",
+    "eyebrow": "第 6 单元 · 实战项目",
+    "lead": "综合运用前面的知识，拆分需求、处理异常、测试边界并完成命令行小项目。",
+    "learnTitle": "从需求到可运行程序",
+    "learnCopy": "先把大任务拆成输入、处理和输出，再把重复逻辑写成函数。对用户输入进行验证，用测试覆盖常见情况和边界情况。",
+    "example": "def read_positive(text):\n    try:\n        value = int(text)\n        return value if value > 0 else None\n    except ValueError:\n        return None",
+    "tip": "项目开发先做最小可运行版本，再逐步增加功能。每增加一项功能，就用正常输入和异常输入各测试一次。",
+    "skills": ["需求拆解", "异常处理", "测试与项目组织"],
+    "starter": ["proj-plan-1","proj-plan-2","proj-input-1","proj-except-1","proj-test-1","proj-test-2","proj-module-1","proj-debug-1"],
+    "questions": [
+      {"id":"proj-plan-1","skill":"需求拆解","type":"多项选择","kind":"multi","title":"设计“猜数字”游戏时，哪些可以作为独立步骤？","options":["生成目标数字","读取玩家输入","比较并给出提示","把所有代码写在同一行"],"answer":[0,1,2],"hint":"把任务拆成输入、处理和输出。","explain":"生成、读取和比较是清楚的步骤；把所有代码挤在一行不利于开发和调试。"},
+      {"id":"proj-plan-2","skill":"需求拆解","type":"单项选择","kind":"choice","title":"开始一个项目时，最合适的第一步是什么？","options":["立刻写最长的代码","明确输入、处理和输出","先优化运行速度","先添加所有高级功能"],"answer":1,"hint":"先弄清楚程序要接收什么、完成什么、给出什么。","explain":"明确输入、处理和输出能帮助确定最小可运行版本。"},
+      {"id":"proj-plan-3","skill":"需求拆解","type":"同类强化","kind":"choice","title":"为什么要把重复逻辑写成函数？","options":["增加重复代码","便于复用和测试","避免使用变量","让程序只能运行一次"],"answer":1,"hint":"函数让一个清楚的任务可以多次调用。","explain":"函数减少重复，并能单独测试一段逻辑。"},
+      {"id":"proj-input-1","skill":"输入处理","type":"代码填空","kind":"input","title":"补全函数，把用户输入转换为整数。","code":"age = ___(input(\"请输入年龄：\"))","answer":"int","hint":"input() 返回字符串，需要类型转换。","explain":"int() 可以把合法的数字字符串转换为整数。"},
+      {"id":"proj-input-2","skill":"输入处理","type":"单项选择","kind":"choice","title":"input() 默认返回哪种数据类型？","options":["int","float","str","bool"],"answer":2,"hint":"即使用户输入数字，input() 也先得到文字。","explain":"input() 返回字符串，需要时再进行类型转换。"},
+      {"id":"proj-except-1","skill":"异常处理","type":"单项选择","kind":"choice","title":"int(\"abc\") 会引发哪类常见异常？","options":["ValueError","KeyError","IndexError","NameError"],"answer":0,"hint":"字符串存在，但内容无法转换为整数。","explain":"值的内容不符合整数格式时会触发 ValueError。"},
+      {"id":"proj-except-2","skill":"异常处理","type":"代码填空","kind":"input","title":"补全关键字，捕获可能出现的异常。","code":"try:\n    number = int(text)\n___ ValueError:\n    number = 0","answer":"except","hint":"try 与哪个关键字配合处理异常？","explain":"except 用于捕获并处理指定异常。"},
+      {"id":"proj-test-1","skill":"测试","type":"多项选择","kind":"multi","title":"测试登录次数输入时，哪些属于边界或异常情况？","options":["0","负数","非数字文字","常见正整数"],"answer":[0,1,2],"hint":"边界测试关注最小值、越界值和错误格式。","explain":"0、负数和非数字文字都可能暴露验证问题；常见正整数属于正常情况。"},
+      {"id":"proj-test-2","skill":"测试","type":"单项选择","kind":"choice","title":"发现程序错误后，哪种处理方式更有效？","options":["同时改很多地方","先构造能稳定重现错误的最小测试","删除所有代码","只看最后一行"],"answer":1,"hint":"调试需要先稳定重现问题。","explain":"最小可重现测试能缩小范围，并验证修复是否有效。"},
+      {"id":"proj-module-1","skill":"模块","type":"单项选择","kind":"choice","title":"要使用 random 模块中的 randint，哪种写法正确？","options":["use random","import random","include random","open random"],"answer":1,"hint":"导入模块使用 import。","explain":"import random 导入模块，之后可使用 random.randint()。"},
+      {"id":"proj-debug-1","skill":"调试","type":"找出错误","kind":"choice","title":"字典中没有键 score 时直接访问 data[\"score\"] 可能出现什么？","options":["KeyError","ValueError","SyntaxError","不会有问题"],"answer":0,"hint":"缺少字典键时会触发与键相关的异常。","explain":"直接访问不存在的键会触发 KeyError，可用 get() 或先判断键是否存在。"},
+      {"id":"proj-quality-1","skill":"代码质量","type":"多项选择","kind":"multi","title":"哪些做法能提升项目可维护性？","options":["使用清楚命名","把功能拆成函数","记录关键假设","复制粘贴同一段代码很多次"],"answer":[0,1,2],"hint":"维护性来自可读、可测和减少重复。","explain":"清楚命名、函数拆分和记录假设都有帮助；大量复制会增加修改成本。"}
+    ],
+    "challenges": [
+      {"id":"quiz","title":"命令行小测验","prompt":"制作一个至少包含 3 道题的小测验，记录得分，并在结束时输出结果。","hints":["用列表或字典组织题目和答案。","循环读取每道题的回答。","答对时更新 score，最后统一输出。"],"checks":[{"pattern":"input\\s*\\(","label":"读取用户回答"},{"pattern":"\\bfor\\b|\\bwhile\\b","label":"使用循环"},{"pattern":"\\bscore\\s*=","label":"记录得分"},{"pattern":"print\\s*\\(","label":"输出结果"}]},
+      {"id":"guess","title":"猜数字游戏","prompt":"生成一个目标数字，让用户反复猜测，并提示偏大或偏小，猜中后结束。","hints":["使用 random 模块生成目标数字。","使用循环允许多次猜测。","比较猜测值与目标值，并为相等、大于、小于分别处理。"],"checks":[{"pattern":"import\\s+random|from\\s+random","label":"导入 random"},{"pattern":"randint\\s*\\(","label":"生成随机整数"},{"pattern":"input\\s*\\(","label":"读取猜测"},{"pattern":"\\bwhile\\b","label":"允许重复猜测"}]},
+      {"id":"tracker","title":"学习任务追踪器","prompt":"制作命令行任务追踪器，允许添加任务、查看任务，并能安全处理无效菜单输入。","hints":["使用列表保存任务。","用循环反复显示菜单，直到用户选择退出。","把不同菜单选项放进条件分支，并为无效输入提供提示。"],"checks":[{"pattern":"\\[\\]","label":"创建任务列表"},{"pattern":"input\\s*\\(","label":"读取菜单输入"},{"pattern":"\\bwhile\\b","label":"保持菜单运行"},{"pattern":"append\\s*\\(","label":"添加任务"},{"pattern":"\\belse\\b","label":"处理其他输入"}]}
+    ]
+  }
+];
+
