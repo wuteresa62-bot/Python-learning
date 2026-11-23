@@ -357,15 +357,18 @@
       catch (e) { return true; }
     }).map(function (check) { return check.label; });
     var feedback = el("#challengeFeedback");
+    var reference = (window.PY_CHALLENGE_FEEDBACK || {})[challenge.id] || {};
     if (!missing.length) {
       var first = us.challengeSolved.indexOf(challenge.id) === -1;
       if (first) { us.challengeSolved.push(challenge.id); state.xp += 50; }
       feedback.className = "feedback show good";
-      feedback.innerHTML = "<b>结构检查通过！" + (first ? " +50 XP" : "") + "</b><br>请再用至少两组不同数据运行，确认结果符合你的设计。";
+      feedback.innerHTML = "<b>结构检查通过！" + (first ? " +50 XP" : "") + "</b><br>下面是一份完整、可运行的参考答案。请先对照自己的写法理解差异，再用不同数据重新测试。" +
+        (reference.solution ? "<pre>" + safe(reference.solution) + "</pre>" : "");
       toast("挑战完成");
     } else {
       feedback.className = "feedback show bad";
-      feedback.innerHTML = "<b>已经完成一部分</b><br>还需要检查：" + missing.map(safe).join("、") + "。提示只指出缺少的结构，不会写出答案。";
+      feedback.innerHTML = "<b>这次还没有通过</b><br>需要检查：" + missing.map(safe).join("、") + "。<br><b>可以按照下面的程序结构继续完成：</b>" +
+        (reference.structure ? "<pre>" + safe(reference.structure) + "</pre>" : "");
     }
     save();
     renderChallengeStatusOnly();
